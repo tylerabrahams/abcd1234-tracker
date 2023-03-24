@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/hamsall/shal7342-tracker/issues"
   },
-  "homepage": "https://github.com/hamsall/shal7342-tracker#readme"
+  "homepage": "https://github.com/hamsall/shal7342-tracker#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
