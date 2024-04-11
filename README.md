@@ -1,3 +1,2 @@
 # shal7342-tracker
-its a tracker. okay?
-for DECO2017
+week 7 server tutorial content for DECO2017
