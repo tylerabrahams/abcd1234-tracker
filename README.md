@@ -1,2 +1,2 @@
 # abcd1234-tracker
-week 7 server tutorial content for DECO2017
+a template for DECO2017 Assessment 3
