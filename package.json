@@ -1,5 +1,5 @@
 {
-  "name": "abcd1234-tracker",
+  "name": "tabr9714-sleeptracker",
   "version": "0.0.1",
   "description": "a template for DECO2017 Assessment 3",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hamsall/abcd1234-tracker.git"
+    "url": "git+https://github.com/hamsall/tabr9714-sleeptracker.git"
   },
   "keywords": [
     "tracker"
@@ -18,9 +18,9 @@
   "author": "hamsall",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hamsall/abcd1234-tracker/issues"
+    "url": "https://github.com/hamsall/tabr9714-sleeptracker/issues"
   },
-  "homepage": "https://github.com/hamsall/abcd1234-tracker#readme",
+  "homepage": "https://github.com/hamsall/tabr9714-sleeptracker#readme",
   "dependencies": {
     "express": "^4.18.2",
     "sass": "^1.75.0"
