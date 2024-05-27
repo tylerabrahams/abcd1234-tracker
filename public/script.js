@@ -20,19 +20,48 @@ window.onload = function () {
     taskList.forEach(task => displayTask(task));
   }
   drawChart(); // Draw chart with existing data
-  updateAverages(); // Update averages with existing data
+
+
+
+  // Define a unique ID's for the example tasks
+  const exampleTasks = [
+    { id: 1, date: '2024-01-01', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Test data' },
+    { id: 2, date: '2024-02-01', type: 'Power Nap', start: '12:00', end: '12:25', rating: 3, details: 'Test data' },
+    { id: 3, date: '2024-03-01', type: 'Restful Nap', start: '14:00', end: '15:10', rating: 2, details: 'Test data' },
+    { id: 4, date: '2024-04-01', type: 'Full Nights Sleep', start: '22:30', end: '07:30', rating: 4, details: 'Test data' },
+    { id: 5, date: '2024-05-01', type: 'Power Nap', start: '13:00', end: '13:30', rating: 4, details: 'Test data' },
+    { id: 6, date: '2024-06-01', type: 'Restful Nap', start: '15:00', end: '15:45', rating: 5, details: 'Test data' }
+  ];
+
+  // Check if each example task already exists before adding
+  exampleTasks.forEach(task => {
+    addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
+
+    // if (!taskList.some(t => t.id === task.id)) {
+    //   addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
+    // }
+  });
 };
 
+
+
+
 //add tasks and push onto the array
-function addTask(date, type, start, end, rating, details) {
+function addTask(date, type, start, end, rating, details, id = Date.now()) {
   let task = {
-    id: Date.now(), // Generate a unique ID for each task
+    // id: Date.now(), // Generate a unique ID for each task
+
+    // Use provided ID or generate a unique ID for each task
+    id: id,
+
     date: date,
     type: type,
     start: start,
     end: end,
     rating: parseInt(rating),
     details: details,
+
+    //add duration and call the function to calculate using the given data
     duration: calculateSleepDuration(start, end)
   };
 
@@ -41,8 +70,9 @@ function addTask(date, type, start, end, rating, details) {
   displayTask(task); // Pass the newly added task to displayTask
 
   drawChart(); // Update chart with new data
-  updateAverages(); // Update averages with new data
 }
+
+
 
 //use math to calculate the sleep duration using inputted start and end times
 function calculateSleepDuration(start, end) {
@@ -60,6 +90,8 @@ function calculateSleepDuration(start, end) {
 
   return `${diffHrs}h ${diffMins}m`;
 }
+
+
 
 const form = document.getElementById("taskform");
 const tasklist = document.getElementById("tasklist");
@@ -79,10 +111,13 @@ form.addEventListener("submit", function (event) {
   if (date && type && start && end && rating) {
     addTask(date, type, start, end, rating, details);
     form.reset();
+    console.log("working")
+
   } else {
     alert("Please fill in all required fields.");
   }
 });
+
 
 
 //access modal to get more information on items in tasklist
@@ -172,12 +207,15 @@ function displayTask(task) {
     taskList = taskList.filter(t => t.id != task.id); // Remove from taskList based on task id
     localStorage.setItem('taskList', JSON.stringify(taskList)); // Update local storage
 
+
+
     drawChart(); // Update chart after deletion
-    updateAverages(); // Update averages after deletion
   });
 
-  
+
 }
+
+
 
 
 //draw the google chart
