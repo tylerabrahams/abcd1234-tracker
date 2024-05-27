@@ -21,8 +21,7 @@ window.onload = function () {
   }
   drawChart(); // Draw chart with existing data
 
-
-
+  
   // Define a unique ID's for the example tasks
   const exampleTasks = [
     { id: 1, date: '2024-01-01', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Test data' },
@@ -35,11 +34,11 @@ window.onload = function () {
 
   // Check if each example task already exists before adding
   exampleTasks.forEach(task => {
-    addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
+    // addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
 
-    // if (!taskList.some(t => t.id === task.id)) {
-    //   addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
-    // }
+    if (!taskList.some(t => t.id === task.id)) {
+      addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
+    }
   });
 };
 
