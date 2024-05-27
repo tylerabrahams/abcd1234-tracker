@@ -21,21 +21,20 @@ window.onload = function () {
   }
   drawChart(); // Draw chart with existing data
 
-  
+
+
   // Define a unique ID's for the example tasks
   const exampleTasks = [
-    { id: 1, date: '2024-01-01', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Test data' },
-    { id: 2, date: '2024-02-01', type: 'Power Nap', start: '12:00', end: '12:25', rating: 3, details: 'Test data' },
-    { id: 3, date: '2024-03-01', type: 'Restful Nap', start: '14:00', end: '15:10', rating: 2, details: 'Test data' },
-    { id: 4, date: '2024-04-01', type: 'Full Nights Sleep', start: '22:30', end: '07:30', rating: 4, details: 'Test data' },
-    { id: 5, date: '2024-05-01', type: 'Power Nap', start: '13:00', end: '13:30', rating: 4, details: 'Test data' },
-    { id: 6, date: '2024-06-01', type: 'Restful Nap', start: '15:00', end: '15:45', rating: 5, details: 'Test data' }
+    { id: 1, date: '01/01/2024', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Test data' },
+    { id: 2, date: '01/02/2024', type: 'Power Nap', start: '12:00', end: '12:25', rating: 3, details: 'Test data' },
+    { id: 3, date: '01/03/2024', type: 'Restful Nap', start: '14:00', end: '15:10', rating: 2, details: 'Test data' },
+    { id: 4, date: '01/04/2024', type: 'Full Nights Sleep', start: '22:30', end: '07:30', rating: 4, details: 'Test data' },
+    { id: 5, date: '01/05/2024', type: 'Power Nap', start: '13:00', end: '13:30', rating: 4, details: 'Test data' },
+    { id: 6, date: '01/06/2024', type: 'Restful Nap', start: '15:00', end: '15:45', rating: 5, details: 'Test data' }
   ];
 
   // Check if each example task already exists before adding
   exampleTasks.forEach(task => {
-    // addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
-
     if (!taskList.some(t => t.id === task.id)) {
       addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
     }
@@ -73,7 +72,17 @@ function addTask(date, type, start, end, rating, details, id = Date.now()) {
 
 
 
-//use math to calculate the sleep duration using inputted start and end times
+// Function to format the date to make it user friendly
+// previously yy/mm/dd, now it will show weekday dd/mm/yy
+function formatDate(dateString) {
+  const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-GB', options); // 'en-GB' is for British English locale
+}
+
+
+
+//function to calculate the sleep duration using inputted start and end times
 function calculateSleepDuration(start, end) {
   const startTime = new Date(`1970-01-01T${start}:00`);
   const endTime = new Date(`1970-01-01T${end}:00`);
@@ -110,8 +119,6 @@ form.addEventListener("submit", function (event) {
   if (date && type && start && end && rating) {
     addTask(date, type, start, end, rating, details);
     form.reset();
-    console.log("working")
-
   } else {
     alert("Please fill in all required fields.");
   }
@@ -150,14 +157,14 @@ function displayTask(task) {
 
 
   item.innerHTML = `
-    <p><strong>Date:</strong> ${task.date}</p>
-    <p><strong>Type:</strong> ${task.type}</p>
+    <p><strong>Date:</strong> ${formatDate(task.date)}</p>
+    <p><strong>Duration:</strong> ${task.duration}</p>
     <p><strong>Rating:</strong> ${task.rating}</p>
     
   `;
+  //<p><strong>Type:</strong> ${task.type}</p>
   //<p><strong>Start:</strong> ${task.start}</p>
   //<p><strong>End:</strong> ${task.end}</p>
-  //<p><strong>Duration:</strong> ${task.duration}</p>
   //<p><strong>Dream Details:</strong> ${task.details}</p>
 
 
@@ -180,7 +187,7 @@ function displayTask(task) {
 
   //add all details into modal when more info button is pressed 
   moreinfoButton.addEventListener("click", () => {
-    document.querySelector("#modal-date").textContent = `Date: ${task.date}`;
+    document.querySelector("#modal-date").textContent = `Date: ${formatDate(task.date)}`;
     document.querySelector("#modal-type").textContent = `Type: ${task.type}`;
     document.querySelector("#modal-start").textContent = `Start: ${task.start}`;
     document.querySelector("#modal-end").textContent = `End: ${task.end}`;
