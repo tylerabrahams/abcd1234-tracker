@@ -184,13 +184,11 @@ function displayTask(task) {
   //insert image
   item.insertBefore(img, item.firstChild); // Insert the image at the beginning
 
-
   //insert item
   // tasklist.appendChild(item);
 
   // Prepend item so new tasks get added to the top of page
   tasklist.prepend(item);
-
 
 
   //create the more info button
@@ -204,13 +202,15 @@ function displayTask(task) {
 
   //add all details into modal when more info button is pressed 
   moreinfoButton.addEventListener("click", () => {
-    document.querySelector("#modal-date").textContent = `Date: ${formatDate(task.date)}`;
-    document.querySelector("#modal-type").textContent = `Type: ${task.type}`;
-    document.querySelector("#modal-start").textContent = `Start: ${task.start}`;
-    document.querySelector("#modal-end").textContent = `End: ${task.end}`;
-    document.querySelector("#modal-duration").textContent = `Duration: ${task.duration}`;
-    document.querySelector("#modal-rating").textContent = `Rating: ${task.rating}`;
-    document.querySelector("#modal-details").textContent = `Details: ${task.details}`;
+    // <strong> bolds the text
+    //&nbsp is a non breaking space
+    document.querySelector("#modal-date").innerHTML = `<strong>Date:</strong> &nbsp; ${formatDate(task.date)}`;
+    document.querySelector("#modal-type").innerHTML = `<strong>Type:</strong> &nbsp; ${task.type}`;
+    document.querySelector("#modal-start").innerHTML = `<strong>Start:</strong> &nbsp; ${task.start}`;
+    document.querySelector("#modal-end").innerHTML = `<strong>End:</strong> &nbsp; ${task.end}`;
+    document.querySelector("#modal-duration").innerHTML = `<strong>Duration:</strong> &nbsp; ${task.duration}`;
+    document.querySelector("#modal-rating").innerHTML = `<strong>Rating:</strong> &nbsp; ${task.rating}`;
+    document.querySelector("#modal-details").innerHTML = `<strong>Dream Details:</strong> &nbsp; ${task.details}`;
     showModal();
   });
 
@@ -230,8 +230,6 @@ function displayTask(task) {
     taskList = taskList.filter(t => t.id != task.id); // Remove from taskList based on task id
     localStorage.setItem('taskList', JSON.stringify(taskList)); // Update local storage
 
-
-
     drawChart(); // Update chart after deletion
   });
 
@@ -240,9 +238,10 @@ function displayTask(task) {
 
 
 
-
 //draw the google chart
-function drawChart() {
+
+function drawChart(){
+
   const data = new google.visualization.DataTable();
   data.addColumn('string', 'Date');
   data.addColumn('number', 'Sleep Duration (hours)');
@@ -268,8 +267,14 @@ function drawChart() {
 
   const options = {
     title: 'Full Nights Sleep - Past 7 Logged Entries',
-    hAxis: { title: 'Date' },
-    vAxis: { title: 'Duration (hours)' },
+    hAxis: {
+      title: 'Date',
+      titleTextStyle: { bold: true } 
+    },
+    vAxis: {
+      title: 'Duration (hours)',
+      titleTextStyle: { bold: true }
+    },
     legend: 'none',
 
     //same colours as form

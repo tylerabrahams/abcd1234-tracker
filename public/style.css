@@ -9,58 +9,6 @@ html {
 }
 
 
-/* Overlay styling- darkens background */
-.overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9;
-}
-
-/* modal styling for more info section */
-.modal {
-    display: grid;
-    /* align-items: center; */
-    padding: 50px ;
-    position: fixed;
-
-    /* align to center of the page */
-    top: 50%;
-    left: 50%;
-
-    /* make it centered */
-    transform: translate(-50%, -50%);
-
-    /* colour */
-    background: rgb(110, 67, 138);
-    border: 4px solid rgb(255, 255, 255);
-    color: rgb(254, 254, 254);
-
-    border-radius: 40px;
-    z-index: 10;
-    width: 20%;
-}
-
-.modal [data-close-modal] {
-    background-color: grey;
-    border: none;
-    color: #ffffff;
-    padding: 6px 8px;
-    border-radius: 10px;
-
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.modal [data-close-modal]:hover {
-    background-color: rgb(178, 163, 163);
-    color: #ffffff;
-}
-
-
-
 /* css for webpage*/
 header {
     height: 15vh;
@@ -75,7 +23,8 @@ body {
 }
 
 /* font and styling for different headings */
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     font-family: "Coiny", system-ui;
     font-weight: 400;
@@ -99,13 +48,17 @@ h3 {
 }
 
 /* css for each column to section different info */
-.left-column, .middle-column, .right-column {
+.left-column,
+.middle-column,
+.right-column {
     padding: 20px;
     background-color: rgb(34, 26, 104);
-    border-radius: 8px;}
+    border-radius: 8px;
+}
 
 /* keep the content on the left and middle column stay on the page as you scroll */
-.left-column, .middle-column {
+.left-column,
+.middle-column {
     position: sticky;
     top: 20px;
     height: max-content;
@@ -119,6 +72,7 @@ form {
     padding: 2em 1em;
     border-radius: 8px;
     background-color: rgb(50, 145, 241);
+
 }
 
 .form-row {
@@ -127,16 +81,17 @@ form {
     padding: .5em;
 }
 
-.form-row > label {
+.form-row>label {
     width: 150px;
     margin-right: 10px;
 }
 
-.form-row > input, .form-row > select, .form-row > textarea {
+.form-row>input,
+.form-row>select,
+.form-row>textarea {
     padding: .5em;
     flex-grow: 1;
 }
-
 
 
 /* css for the listed sleep data */
@@ -183,8 +138,11 @@ ul li button.more-info-button {
     padding: 10px 10px;
     width: 120px;
     border-radius: 10px;
+
+    margin-left: 10px;
     margin-right: 10px;
-    margin-top: 0px;
+
+    cursor: pointer;
 
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
@@ -198,13 +156,14 @@ ul li button.more-info-button:hover {
 
 
 /* css for the delete button*/
-ul li button.del-button{
+ul li button.del-button {
     background-color: grey;
     border: none;
     color: #ffffff;
     padding: 6px 8px;
     border-radius: 10px;
-    margin-right: 10px;
+
+    cursor: pointer;
 
     font-family: "Ubuntu", sans-serif;
     font-weight: 400;
@@ -218,18 +177,75 @@ ul li button.del-button:hover {
 
 
 
+/* Overlay styling- darkens background */
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+}
+
+/* modal styling for more info section */
+.modal {
+    display: grid;
+    /* align-items: center; */
+    padding: 50px;
+    position: fixed;
+
+    /* align to center of the page */
+    top: 50%;
+    left: 50%;
+
+    /* make it centered */
+    transform: translate(-50%, -50%);
+
+    /* colour */
+    background: rgb(110, 67, 138);
+    border: 4px solid rgb(255, 255, 255);
+    color: rgb(254, 254, 254);
+
+    border-radius: 40px;
+    z-index: 10;
+    width: 20%;
+}
+
+.modal [data-close-modal] {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 6px 8px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.modal [data-close-modal]:hover {
+    background-color: rgb(178, 163, 163);
+    color: #ffffff;
+}
+
+
+
 /* chnage screen size to single column when the width of screen becomes less than 800px */
 @media screen and (max-width: 800px) {
     .container {
         grid-template-columns: 1fr;
     }
+
     /* change the position of other content to relative so that they scroll on a smaller screen */
-    .left-column, .middle-column {
+    .left-column,
+    .middle-column {
         position: relative;
         top: auto;
         height: auto;
         align-self: auto;
     }
+
     header {
         height: auto
     }
