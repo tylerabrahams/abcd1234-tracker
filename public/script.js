@@ -171,9 +171,14 @@ function displayTask(task) {
   //insert image
   item.insertBefore(img, item.firstChild); // Insert the image at the beginning
 
-  //insert items
-  tasklist.appendChild(item);
 
+  //insert items
+  // tasklist.appendChild(item);
+
+  // Prepend item to the task list so new tasks get added to the top of page
+  tasklist.prepend(item);
+
+  console.log("working");
 
 
   //create the more info button
