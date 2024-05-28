@@ -42,10 +42,24 @@ html {
     width: 20%;
 }
 
-.modal.data-close-modal {
-    max-width: 100 px;
-    color: blue;
+.modal [data-close-modal] {
+    background-color: grey;
+    border: none;
+    color: #ffffff;
+    padding: 6px 8px;
+    border-radius: 10px;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+.modal [data-close-modal]:hover {
+    background-color: rgb(178, 163, 163);
+    color: #ffffff;
+}
+
+
 
 /* css for webpage*/
 header {
@@ -74,13 +88,14 @@ h3 {
     font-style: normal;
 }
 
+
 /* css for grid and spacing */
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     width: 90%;
-    max-width: 1600px;
+    max-width: 1800px;
 }
 
 /* css for each column to section different info */
@@ -96,6 +111,7 @@ h3 {
     height: max-content;
     align-self: start;
 }
+
 
 /* css for the input sleep data form */
 form {
@@ -121,6 +137,8 @@ form {
     flex-grow: 1;
 }
 
+
+
 /* css for the listed sleep data */
 ul {
     list-style-type: none;
@@ -132,11 +150,10 @@ ul li {
     display: flex;
     /* flex-direction: row; */
     align-items: center;
-    padding: 10px;
+    padding: 20px;
     background-color: rgb(10, 75, 140);
     margin-bottom: 20px;
     border-radius: 8px;
-    height: 100px;
 }
 
 /* css for sleep type images */
@@ -153,8 +170,8 @@ ul li .task-content {
 }
 
 ul li p {
-    margin: 0 0 10px;
-    margin-right: 15px;
+    margin: 0 0 15px;
+    margin-right: 5px;
 }
 
 
@@ -195,7 +212,7 @@ ul li button.del-button{
 }
 
 ul li button.del-button:hover {
-    color: black;
+    color: rgb(255, 255, 255);
     background-color: #ef3636;
 }
 

@@ -23,20 +23,34 @@ window.onload = function () {
 
 
 
+  //Example test data is for demonstrative purposes only, to show functionality once multiple entires have been made.
   // Define a unique ID's for the example tasks
   const exampleTasks = [
-    { id: 1, date: '01/01/2024', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Test data' },
-    { id: 2, date: '01/02/2024', type: 'Power Nap', start: '12:00', end: '12:25', rating: 3, details: 'Test data' },
-    { id: 3, date: '01/03/2024', type: 'Restful Nap', start: '14:00', end: '15:10', rating: 2, details: 'Test data' },
-    { id: 4, date: '01/04/2024', type: 'Full Nights Sleep', start: '22:30', end: '07:30', rating: 4, details: 'Test data' },
-    { id: 5, date: '01/05/2024', type: 'Power Nap', start: '13:00', end: '13:30', rating: 4, details: 'Test data' },
-    { id: 6, date: '01/06/2024', type: 'Restful Nap', start: '15:00', end: '15:45', rating: 5, details: 'Test data' }
+    { id: 1, date: '01/01/2024', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Example Test data' },
+    { id: 2, date: '01/01/2024', type: 'Power Nap', start: '12:00', end: '12:25', rating: 3, details: 'Example Test data' },
+
+    { id: 3, date: '01/02/2024', type: 'Full Nights Sleep', start: '22:30', end: '07:30', rating: 4, details: 'Example Test data' },
+
+    { id: 4, date: '01/03/2024', type: 'Full Nights Sleep', start: '22:30', end: '08:30', rating: 4, details: 'Example Test data' },
+    { id: 5, date: '01/03/2024', type: 'Restful Nap', start: '14:00', end: '15:10', rating: 2, details: 'Example Test data' },
+
+    { id: 6, date: '01/04/2024', type: 'Full Nights Sleep', start: '22:30', end: '07:30', rating: 4, details: 'Example Test data' },
+
+    { id: 7, date: '01/05/2024', type: 'Full Nights Sleep', start: '22:30', end: '09:30', rating: 4, details: 'Example Test data' },
+    { id: 8, date: '01/05/2024', type: 'Power Nap', start: '13:00', end: '13:30', rating: 4, details: 'Example Test data' },
+
+
+    { id: 9, date: '01/06/2024', type: 'Full Nights Sleep', start: '22:30', end: '08:30', rating: 4, details: 'Example Test data' },
+
+    { id: 10, date: '01/07/2024', type: 'Full Nights Sleep', start: '22:30', end: '10:00', rating: 4, details: 'Example Test data' },
+    { id: 11, date: '01/07/2024', type: 'Restful Nap', start: '15:00', end: '15:45', rating: 5, details: 'Example Test data' }
   ];
 
   // Check if each example task already exists before adding
   exampleTasks.forEach(task => {
     if (!taskList.some(t => t.id === task.id)) {
       addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
+      console.log(task.date);
     }
   });
 };
@@ -75,7 +89,7 @@ function addTask(date, type, start, end, rating, details, id = Date.now()) {
 // Function to format the date to make it user friendly
 // previously yy/mm/dd, now it will show weekday dd/mm/yy
 function formatDate(dateString) {
-  const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
+  const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' };
   const date = new Date(dateString);
   return date.toLocaleDateString('en-GB', options); // 'en-GB' is for British English locale
 }
@@ -126,7 +140,7 @@ form.addEventListener("submit", function (event) {
 
 
 
-//access modal to get more information on items in tasklist
+//create modal functionality to get more information on items in tasklist
 const modal = document.querySelector("[data-modal]")
 
 //show the modal
@@ -160,7 +174,6 @@ function displayTask(task) {
     <p><strong>Date:</strong> ${formatDate(task.date)}</p>
     <p><strong>Duration:</strong> ${task.duration}</p>
     <p><strong>Rating:</strong> ${task.rating}</p>
-    
   `;
   //<p><strong>Type:</strong> ${task.type}</p>
   //<p><strong>Start:</strong> ${task.start}</p>
@@ -172,13 +185,12 @@ function displayTask(task) {
   item.insertBefore(img, item.firstChild); // Insert the image at the beginning
 
 
-  //insert items
+  //insert item
   // tasklist.appendChild(item);
 
-  // Prepend item to the task list so new tasks get added to the top of page
+  // Prepend item so new tasks get added to the top of page
   tasklist.prepend(item);
 
-  console.log("working");
 
 
   //create the more info button
@@ -235,19 +247,34 @@ function drawChart() {
   data.addColumn('string', 'Date');
   data.addColumn('number', 'Sleep Duration (hours)');
 
-  taskList.forEach(task => {
+  // Filter tasks to include only "Full Nights Sleep" entries
+  const fullNightSleepTasks = taskList.filter(task => task.type === "Full Nights Sleep");
+
+  // Sort tasks by date (most recent first), limit to the past 7 entries, and then reverse the order.
+  // More logical to see new entries get added from left to right
+  const sortedTasks = fullNightSleepTasks
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 7)
+    .reverse();
+
+
+  // Add rows to the data table
+  sortedTasks.forEach(task => {
     const [hrs, mins] = task.duration.split(' ').map(part => parseInt(part));
     const duration = hrs + mins / 60;
-    data.addRow([task.date, duration]);
+    const formattedDate = formatDate(task.date); // Use formatDate function to make the date user-friendly
+    data.addRow([formattedDate, duration]);
   });
 
   const options = {
-    title: 'Sleep Duration Over Time',
+    title: 'Full Nights Sleep - Past 7 Logged Entries',
     hAxis: { title: 'Date' },
     vAxis: { title: 'Duration (hours)' },
     legend: 'none',
-    colors: ['#1c91c0'],
-    backgroundColor: '#f1f8e9'
+
+    //same colours as form
+    colors: ['3291F1'],
+    backgroundColor: '#ffffff'
   };
 
   const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
