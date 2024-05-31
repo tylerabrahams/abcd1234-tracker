@@ -7,9 +7,9 @@ let taskList = [];
 
 //define mapping between sleep types and corresponding image
 const sleepTypeImages = {
-  "Full Nights Sleep": "photos/sleep.jpeg",
-  "Power Nap": "photos/power-nap.png",
-  "Restful Nap": "photos/restful-nap.jpeg"
+  "Full Nights Sleep": "public/photos/sleep.jpeg",
+  "Power Nap": "public/photos/power-nap.png",
+  "Restful Nap": "public/photos/restful-nap.jpeg"
 };
 
 // Retrieve tasks from local storage when the page loads
