@@ -57,6 +57,23 @@ window.onload = function () {
 
 
 
+// Function to enable scrolling for the right column when cursor is over it
+function rightColumnScroll() {
+  const rightColumn = document.querySelector('.right-column');
+
+  rightColumn.addEventListener('mouseenter', function() {
+    rightColumn.style.overflowY = 'auto'; // Enable vertical scrollbar
+  });
+
+  rightColumn.addEventListener('mouseleave', function() {
+    rightColumn.style.overflowY = 'hidden'; // Disable vertical scrollbar
+  });
+}
+
+// Enable scrolling for the right column
+rightColumnScroll();
+
+
 
 //add tasks and push onto the array
 function addTask(date, type, start, end, rating, details, id = Date.now()) {
@@ -174,8 +191,9 @@ function displayTask(task) {
   item.innerHTML = `
     <p><strong>Date:</strong> ${formatDate(task.date)}</p>
     <p><strong>Duration:</strong> ${task.duration}</p>
-    <p><strong>Rating:</strong> ${task.rating}</p>
+    
   `;
+  //<p><strong>Rating:</strong> ${task.rating}</p>
   //<p><strong>Type:</strong> ${task.type}</p>
   //<p><strong>Start:</strong> ${task.start}</p>
   //<p><strong>End:</strong> ${task.end}</p>
@@ -419,4 +437,3 @@ function displayAverageSleepDuration() {
     averageSleepContainer.appendChild(sleepTypeElement);
   }
 }
-

@@ -58,7 +58,7 @@ h3 {
     /* height: max-content; */
 }
 
-/* keep the content on the middle column stay on the page as you scroll */
+/* keep the content on the left and middle column to stay on the page as you scroll */
 .left-column,
 .middle-column {
     position: sticky;
@@ -71,6 +71,16 @@ h3 {
     position: sticky;
     height: 1000px;
 } */
+
+/* Initial style for the right column */
+.right-column {
+    height: 100vh; 
+    overflow-y: hidden; 
+    /* Hide vertical scrollbar by default */
+    /* Ensure it takes the full height of its container */
+}
+
+
 
 
 
