@@ -45,6 +45,7 @@ h3 {
     gap: 20px;
     width: 90%;
     max-width: 1800px;
+    /* max-height: 1000px; */
 }
 
 /* css for each column to section different info */
@@ -54,9 +55,10 @@ h3 {
     padding: 20px;
     background-color: rgb(34, 26, 104);
     border-radius: 8px;
+    /* height: max-content; */
 }
 
-/* keep the content on the left and middle column stay on the page as you scroll */
+/* keep the content on the middle column stay on the page as you scroll */
 .left-column,
 .middle-column {
     position: sticky;
@@ -64,6 +66,69 @@ h3 {
     height: max-content;
     align-self: start;
 }
+
+/* .right-column {
+    position: sticky;
+    height: 1000px;
+} */
+
+
+
+/* CSS for the all-time average rating div */
+#ratings_div {
+    /* margin-top: 30px; */
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    display: row; 
+    align-items: center;  
+    text-align: center; 
+    
+    background-color: rgb(10, 75, 140);
+    border-radius: 8px;
+    color: white;
+}
+
+#ratings_div h3 {
+    margin-bottom: 10px;
+    font-family: "Coiny", system-ui;
+    font-weight: 400;
+}
+
+#ratings_div p {
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+}
+
+
+/* CSS for the all-time sleep duration div */
+#duration_div {
+    /* margin-top: 30px; */
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+    display: row; 
+    align-items: center;  
+    text-align: center; 
+    
+    background-color: rgb(10, 75, 140);
+    border-radius: 8px;
+    color: white;
+}
+
+#duration_div h3 {
+    margin-bottom: 10px;
+    font-family: "Coiny", system-ui;
+    font-weight: 400;
+}
+
+#duration_div p {
+    margin: 0;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+}
+
 
 
 /* css for the input sleep data form */
@@ -92,6 +157,7 @@ form {
     padding: .5em;
     flex-grow: 1;
 }
+
 
 
 /* css for the listed sleep data */

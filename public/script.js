@@ -82,6 +82,7 @@ function addTask(date, type, start, end, rating, details, id = Date.now()) {
   displayTask(task); // Pass the newly added task to displayTask
 
   drawChart(); // Update chart with new data
+
 }
 
 
@@ -158,7 +159,7 @@ modal.querySelector("[data-close-modal]").addEventListener("click", closeModal);
 
 
 
-//create the tasks in a list
+//create the tasks and their contents
 function displayTask(task) {
   let item = document.createElement("li");
   item.setAttribute("data-id", task.id);
@@ -231,16 +232,16 @@ function displayTask(task) {
     localStorage.setItem('taskList', JSON.stringify(taskList)); // Update local storage
 
     drawChart(); // Update chart after deletion
-  });
 
+
+  });
 
 }
 
 
 
 //draw the google chart
-
-function drawChart(){
+function drawChart() {
 
   const data = new google.visualization.DataTable();
   data.addColumn('string', 'Date');
@@ -249,8 +250,8 @@ function drawChart(){
   // Filter tasks to include only "Full Nights Sleep" entries
   const fullNightSleepTasks = taskList.filter(task => task.type === "Full Nights Sleep");
 
-  // Sort tasks by date (most recent first), limit to the past 7 entries, and then reverse the order.
-  // More logical to see new entries get added from left to right
+  // Sort tasks by date (most recent first)
+  // limit to the past 7 entries, then reverse the order. (more logical to see new entries get added from left to right)
   const sortedTasks = fullNightSleepTasks
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 7)
@@ -269,7 +270,7 @@ function drawChart(){
     title: 'Full Nights Sleep - Past 7 Logged Entries',
     hAxis: {
       title: 'Date',
-      titleTextStyle: { bold: true } 
+      titleTextStyle: { bold: true }
     },
     vAxis: {
       title: 'Duration (hours)',
@@ -277,11 +278,145 @@ function drawChart(){
     },
     legend: 'none',
 
-    //same colours as form
+    //consistency using the same colours as form
     colors: ['3291F1'],
     backgroundColor: '#ffffff'
   };
 
   const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
   chart.draw(data, options);
+
+
+
+
+  // Call average sleep type function
+  displayAverageRatings();
+
+  // Call average sleep duration function
+  displayAverageSleepDuration();
+
+
 }
+
+
+
+
+// Calculate the average ratings for each sleep type
+function calculateAverageRatings() {
+  const averageRatings = {};
+
+  // Initialize rating sums and counts for each sleep type
+  const ratingSums = {
+    "Full Nights Sleep": 0,
+    "Power Nap": 0,
+    "Restful Nap": 0
+  };
+  const ratingCounts = {
+    "Full Nights Sleep": 0,
+    "Power Nap": 0,
+    "Restful Nap": 0
+  };
+
+  // Iterate through taskList to calculate sums and counts
+  taskList.forEach(task => {
+    ratingSums[task.type] += task.rating;
+    ratingCounts[task.type]++;
+  });
+
+  // Calculate average ratings for each sleep type
+  for (const type in ratingSums) {
+
+    //checks for ratings for the current sleep type, if true and count is greater than 0, sum is divided by counter.
+    //if false and there are no ratings, and makes the rating 0.
+    averageRatings[type] = ratingCounts[type] > 0 ? ratingSums[type] / ratingCounts[type] : 0;
+
+  }
+
+  return averageRatings;
+}
+
+
+// Display average ratings in the DOM
+function displayAverageRatings() {
+
+  const averageRatings = calculateAverageRatings();
+  const averageRatingsContainer = document.getElementById("ratings_div");
+
+  // Clear previous content
+  averageRatingsContainer.innerHTML = "";
+
+  // Display average ratings for each sleep type
+  for (const type in averageRatings) {
+
+    // Round to 2 decimal places
+    const rating = averageRatings[type].toFixed(2);
+
+    const ratingElement = document.createElement("h3");
+
+    //change the style to the sleep type and sleep rating
+    ratingElement.innerHTML = `<h3>${type}:</h3><p>${rating} / 5</p>`;
+
+    //add the entire element into the container
+    averageRatingsContainer.appendChild(ratingElement);
+  }
+}
+
+
+
+
+// Calculate the average sleep duration for each sleep type
+function calculateAverageSleepDuration() {
+  const averageSleepDuration = {};
+
+  // Initialize duration sums and counts for each sleep type
+  const durationSums = {
+    "Full Nights Sleep": { hours: 0, minutes: 0 },
+    "Power Nap": { hours: 0, minutes: 0 },
+    "Restful Nap": { hours: 0, minutes: 0 }
+  };
+  const durationCounts = {
+    "Full Nights Sleep": 0,
+    "Power Nap": 0,
+    "Restful Nap": 0
+  };
+
+  // Iterate through taskList to calculate sums and counts
+  taskList.forEach(task => {
+    const [hrs, mins] = task.duration.split(' ').map(part => parseInt(part));
+    durationSums[task.type].hours += hrs;
+    durationSums[task.type].minutes += mins;
+    durationCounts[task.type]++;
+  });
+
+  // Calculate average sleep duration for each sleep type
+  // Calculate average sleep duration for each sleep type
+  for (const type in durationSums) {
+    const totalMinutes = durationSums[type].hours * 60 + durationSums[type].minutes;
+    const count = durationCounts[type];
+    const avgTotalMinutes = count > 0 ? totalMinutes / count : 0;
+    const avgHours = Math.floor(avgTotalMinutes / 60);
+    const avgMinutes = Math.round(avgTotalMinutes % 60); // Round to the nearest minute
+    averageSleepDuration[type] = { hours: avgHours, minutes: avgMinutes };
+  }
+
+  return averageSleepDuration;
+}
+
+// Display average sleep duration in the DOM
+function displayAverageSleepDuration() {
+  const averageSleepDuration = calculateAverageSleepDuration();
+  const averageSleepContainer = document.getElementById("duration_div");
+
+  // Clear previous content
+  averageSleepContainer.innerHTML = "";
+
+  // Display average sleep duration for each sleep type
+  for (const type in averageSleepDuration) {
+    const avgHours = averageSleepDuration[type].hours;
+    const avgMinutes = averageSleepDuration[type].minutes;
+    const sleepTypeElement = document.createElement("h3");
+    sleepTypeElement.innerHTML = `<h3>${type}:</h3><p>${avgHours} hours ${avgMinutes} minutes</p>`;
+    averageSleepContainer.appendChild(sleepTypeElement);
+  }
+}
+
