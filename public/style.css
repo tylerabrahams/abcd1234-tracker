@@ -48,6 +48,8 @@ h3 {
     /* max-height: 1000px; */
 }
 
+
+
 /* css for each column to section different info */
 .left-column,
 .middle-column,
@@ -193,84 +195,64 @@ ul li button.del-button:hover {
 
 
 
-
-
-
 /* CSS for the all-time average rating div */
 #ratings_div {
     padding: 10px;
     margin: 20px;
-
-    display: row; 
-    align-items: center;  
-    /* text-align: center;  */
     
-    background-color: rgb(10, 75, 140);
-    border-radius: 8px;
     color: white;
-}
-
-#ratings_div h3 {
-    margin-bottom: 10px;
-    font-family: "Coiny", system-ui;
-    font-weight: 400;
-}
-
-#ratings_div p {
-    margin: 0;
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
+    border-radius: 20px;
 }
 
 
 /* CSS for the all-time sleep duration div */
-/* #duration_div {
-    padding-top: 10px;
-    padding-bottom: 20px;
-
-    display: row; 
-    align-items: center;  
-    text-align: center; 
+#duration_div {
+    padding: 10px;
+    margin:20px;
     
-    background-color: rgb(10, 75, 140);
-    border-radius: 8px;
+    border-radius: 20px;
     color: white;
 }
-
-#duration_div h3 {
-    margin-bottom: 10px;
-    font-family: "Coiny", system-ui;
-    font-weight: 400;
-}
-
-#duration_div p {
-    margin: 0;
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 400;
-} */
 
 
 
 /* Dialog modal to display average rating and duration info for buttons on the left column*/
 
-/* test**** dialog modal css*/
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 
 .avgRatingModal{
-    padding: 0.5rem;
+    padding-left: 40px;
+    padding-right: 40px;
 
     align-items: center;
     text-align: center;
 
-    width: 260px;
+    background: rgb(161, 70, 14);
+    border: 4px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    border-radius: 40px;
+}
 
-    border-radius: 0.25rem;
-
+button.average-rating-open-modal {
+    color: rgb(161, 70, 14);
 }
 
 
 
+.avgDurationModal{
+    padding-left: 40px;
+    padding-right: 40px;
 
-/* test */
+    align-items: center;
+    text-align: center;
+
+    background: rgb(176, 104, 4);
+    border: 4px solid rgb(255, 255, 255);
+    color: rgb(254, 254, 254);
+    border-radius: 40px;
+}
 
 
 
@@ -306,7 +288,6 @@ ul li button.del-button:hover {
     background: rgb(110, 67, 138);
     border: 4px solid rgb(255, 255, 255);
     color: rgb(254, 254, 254);
-
     border-radius: 40px;
     z-index: 10;
     width: 20%;
