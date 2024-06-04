@@ -55,27 +55,28 @@ h3 {
     padding: 20px;
     background-color: rgb(34, 26, 104);
     border-radius: 8px;
+    height: 100vh; 
+
     /* height: max-content; */
 }
 
 /* keep the content on the left and middle column to stay on the page as you scroll */
-.left-column,
-.middle-column {
-    position: sticky;
-    top: 20px;
-    height: max-content;
-    align-self: start;
-    height: 100vh; 
-}
+/* .left-column, */
+/* .middle-column { */
+    /* position: center; */
+    /* top: 20px; */
+    /* height: max-content; */
+    /* align-self: start; */
+    /* height: 100vh;  */
+
+
+/* } */
 
 /* Initial style for the right column */
 .right-column {
-    height: 100vh; 
     /* Hide vertical scrollbar */
     overflow-y: hidden; 
 }
-
-
 
 
 
@@ -262,20 +263,9 @@ ul li button.del-button:hover {
 
     width: 260px;
 
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+    border-radius: 0.25rem;
 
-    background: rgb(53, 3, 230);
-    border: 4px solid rgb(255, 255, 255);
-    color: rgb(254, 254, 254);
-
-    border-radius: 20px;
-    /* z-index: 10; */
-    /* width: 400px; */
 }
-
-
 
 
 

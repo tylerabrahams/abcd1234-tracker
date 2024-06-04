@@ -17,7 +17,7 @@
 
 <header>
     <br>
-    <h1> ☾  Welcome to Your Personalized Sleep Tracker!</h1>
+    <h1> ☾ Welcome to Your Personalized Sleep Tracker!</h1>
 </header>
 
 <body>
@@ -30,7 +30,7 @@
             <!-- create the div for the google chart -->
             <h2>Sleep Charts and Statistics</h2>
             <div id="chart_div" style="width: 100%; height: 500px;"></div>
-           
+
             <br>
             <br>
 
@@ -38,9 +38,9 @@
             <button average-rating-open-modal>All Time Average Sleep Rating</button>
 
             <!-- dialog modal for average sleep-->
-            <dialog average-rating-modal class = "avgRatingModal">
+            <dialog average-rating-modal class="avgRatingModal">
                 <div>
-                    <h2>All Time Average Sleep Stats</h2>
+                    <h2>All Time Average Sleep Rating</h2>
                 </div>
                 <div id="ratings_div" style="width: 200px; height: 100%;"></div>
                 <button average-rating-close-modal>Close</button>
@@ -54,18 +54,17 @@
             <button average-duration-open-modal>All Time Average Sleep Duration</button>
 
             <!-- dialog modal for average duration-->
-            <dialog average-duration-modal class = "avgDurationModal">
+            <dialog average-duration-modal class="avgDurationModal">
                 <div>
-                    <h2>All Time Average Duration Stats</h2>
+                    <h2>All Time Average Sleep Duration</h2>
                 </div>
                 <div id="duration_div" style="width: 200px; height: 100%;"></div>
                 <button average-duration-close-modal>Close</button>
             </dialog>
 
 
-
             <script>
-                // functionality for average rating modal
+                // functionality for average rating modal and button
                 const openAvgRatingModalButton = document.querySelector("[average-rating-open-modal]")
                 const closeAvgRatingModalButton = document.querySelector("[average-rating-close-modal]")
                 const avgRatingModal = document.querySelector("[average-rating-modal]")
@@ -80,7 +79,7 @@
                 })
 
 
-                // functionality for average duration modal
+                // functionality for average duration modal and button
                 const openAvgDurationModalButton = document.querySelector("[average-duration-open-modal]")
                 const closeAvgDurationModalButton = document.querySelector("[average-duration-close-modal]")
                 const avgDurationModal = document.querySelector("[average-duration-modal]")
@@ -92,12 +91,11 @@
                 closeAvgDurationModalButton.addEventListener("click", () => {
                     avgDurationModal.close()
                 })
-
             </script>
 
         </div>
 
-         <!-- defining the middle column and contents -->
+        <!-- defining the middle column and contents -->
         <div class="middle-column">
             <h2>Sleep Form</h2>
 
@@ -154,7 +152,7 @@
 
             </form>
 
-<!-- 
+            <!-- 
             <br>
             <br> -->
 
@@ -195,7 +193,7 @@
         </div>
     </div>
 
-    
+
     <!-- footer and credits -->
     <footer>
         <br>

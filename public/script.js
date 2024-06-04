@@ -61,11 +61,11 @@ window.onload = function () {
 function rightColumnScroll() {
   const rightColumn = document.querySelector('.right-column');
 
-  rightColumn.addEventListener('mouseenter', function() {
+  rightColumn.addEventListener('mouseenter', function () {
     rightColumn.style.overflowY = 'auto'; // Enable vertical scrollbar
   });
 
-  rightColumn.addEventListener('mouseleave', function() {
+  rightColumn.addEventListener('mouseleave', function () {
     rightColumn.style.overflowY = 'hidden'; // Disable vertical scrollbar
   });
 }
@@ -158,6 +158,7 @@ form.addEventListener("submit", function (event) {
 
 
 
+
 //create modal functionality to get more information on items in tasklist
 const modal = document.querySelector("[data-modal]")
 
@@ -173,6 +174,8 @@ function closeModal() {
 
 //add functionality to the close modal button
 modal.querySelector("[data-close-modal]").addEventListener("click", closeModal);
+
+
 
 
 
@@ -251,7 +254,6 @@ function displayTask(task) {
 
     drawChart(); // Update chart after deletion
 
-
   });
 
 }
@@ -305,18 +307,13 @@ function drawChart() {
   chart.draw(data, options);
 
 
-
-
   // Call average sleep type function
   displayAverageRatings();
 
   // Call average sleep duration function
   displayAverageSleepDuration();
 
-
 }
-
-
 
 
 // Calculate the average ratings for each sleep type
