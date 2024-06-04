@@ -372,7 +372,7 @@ function displayAverageRatings() {
     const ratingElement = document.createElement("h3");
 
     //change the style to the sleep type and sleep rating
-    ratingElement.innerHTML = `<h3>${type}:   ★</h3><p>${rating} / 5</p>`;
+    ratingElement.innerHTML = `<h3>★  ${type}:   </h3><p>${rating} / 5</p>`;
 
     //add the entire element into the container
     averageRatingsContainer.appendChild(ratingElement);
@@ -433,7 +433,7 @@ function displayAverageSleepDuration() {
     const avgHours = averageSleepDuration[type].hours;
     const avgMinutes = averageSleepDuration[type].minutes;
     const sleepTypeElement = document.createElement("h3");
-    sleepTypeElement.innerHTML = `<h3>${type}:  Ẓẓ</h3><p>${avgHours} hours ${avgMinutes} minutes</p>`;
+    sleepTypeElement.innerHTML = `<h3>Ẓẓ  ${type}:  </h3><p>${avgHours} hours ${avgMinutes} minutes</p>`;
     averageSleepContainer.appendChild(sleepTypeElement);
   }
 }
