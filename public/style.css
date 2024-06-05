@@ -198,7 +198,7 @@ dialog::backdrop {
     text-align: center;
 
     background: rgb(110, 67, 138);
-    border: 4px solid rgb(255, 255, 255);
+    border: 4px solid rgb(247, 216, 78);
     color: rgb(255, 255, 255);
     border-radius: 40px;
 }
@@ -261,7 +261,7 @@ button[average-rating-close-modal]:hover {
     text-align: center;
 
     background: rgb(110, 67, 138);
-    border: 4px solid rgb(255, 255, 255);
+    border: 4px solid rgb(185, 178, 178);
     color: rgb(254, 254, 254);
     border-radius: 40px;
 }
@@ -349,7 +349,7 @@ button[average-duration-close-modal]:hover {
 
     /* colour */
     background: rgb(110, 67, 138);
-    border: 4px solid rgb(255, 255, 255);
+    border: 4px solid #097f2b;
     color: rgb(254, 254, 254);
     border-radius: 40px;
     z-index: 10;
