@@ -53,28 +53,23 @@ window.onload = function () {
       console.log(task.date);
     }
   });
+
+  updateEntryCounter()
 };
 
 
 
-
-//test
-
-//adding a logged entry counter to tally all logged entries
+//entry counter to tally all logged entries
 let entryCounter = 0;
 console.log(entryCounter);
 
+//updates entry counter display on DOM
 function updateEntryCounter(){
-  
-  
+  const counterElement = document.getElementById("entry-counter");
+  entryCounter = taskList.length;
+  counterElement.innerHTML = `<h3>😴 Total Logged Entries: ${entryCounter}</h3>`;
   console.log(entryCounter);
-
-
 }
-
-// testttee
-
-
 
 
 
@@ -116,12 +111,14 @@ function addTask(date, type, start, end, rating, details, id = Date.now()) {
   };
 
   taskList.push(task);
-  localStorage.setItem('taskList', JSON.stringify(taskList)); // Update local storage
-  displayTask(task); // Pass the newly added task to displayTask
+  // Update local storage
+  localStorage.setItem('taskList', JSON.stringify(taskList)); 
+  // Pass the newly added task to displayTask
+  displayTask(task); 
 
-  drawChart(); // Update chart with new data
+  drawChart();
 
-  entryCounter = entryCounter +1;
+  updateEntryCounter();
 }
 
 
@@ -271,12 +268,15 @@ function displayTask(task) {
   //create the function for when the delete button is pressed
   delButton.addEventListener("click", function (event) {
     item.remove();
-    taskList = taskList.filter(t => t.id != task.id); // Remove from taskList based on task id
-    localStorage.setItem('taskList', JSON.stringify(taskList)); // Update local storage
+    // Remove from taskList based on task id
+    taskList = taskList.filter(t => t.id != task.id); 
+    // Update local storage
+    localStorage.setItem('taskList', JSON.stringify(taskList)); 
 
-    drawChart(); // Update chart after deletion
+    drawChart();
 
-    entryCounter = entryCounter -1;
+    updateEntryCounter();
+
   });
 
 }
