@@ -57,6 +57,27 @@ window.onload = function () {
 
 
 
+
+//test
+
+//adding a logged entry counter to tally all logged entries
+let entryCounter = 0;
+console.log(entryCounter);
+
+function updateEntryCounter(){
+  
+  
+  console.log(entryCounter);
+
+
+}
+
+// testttee
+
+
+
+
+
 // Function to enable scrolling for the right column when cursor is over it
 function rightColumnScroll() {
   const rightColumn = document.querySelector('.right-column');
@@ -100,6 +121,7 @@ function addTask(date, type, start, end, rating, details, id = Date.now()) {
 
   drawChart(); // Update chart with new data
 
+  entryCounter = entryCounter +1;
 }
 
 
@@ -254,6 +276,7 @@ function displayTask(task) {
 
     drawChart(); // Update chart after deletion
 
+    entryCounter = entryCounter -1;
   });
 
 }

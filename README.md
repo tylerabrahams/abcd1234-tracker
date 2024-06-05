@@ -67,6 +67,6 @@ Modal Tutorial: https://youtu.be/ywtkJkxJsdg?si=H4IBwiMuqP3jG39L
 Google Charts Tutorial: https://youtu.be/tSHwhtZ96_8?si=448hgT9AQ6c6qqHk
 
 symbols and icons: https://www.i2symbol.com/symbols 
-
+emojis: https://emojipedia.org/person-in-bed 
 
 

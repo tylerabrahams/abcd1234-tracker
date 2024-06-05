@@ -62,17 +62,6 @@ h3 {
     /* height: max-content; */
 }
 
-/* keep the content on the left and middle column to stay on the page as you scroll */
-/* .left-column, */
-/* .middle-column { */
-    /* position: center; */
-    /* top: 20px; */
-    /* height: max-content; */
-    /* align-self: start; */
-    /* height: 100vh;  */
-
-
-/* } */
 
 /* Initial style for the right column */
 .right-column {
@@ -195,33 +184,12 @@ ul li button.del-button:hover {
 
 
 
-/* CSS for the all-time average rating div */
-#ratings_div {
-    padding: 10px;
-    margin: 20px;
-    
-    color: white;
-    border-radius: 20px;
-}
-
-
-/* CSS for the all-time sleep duration div */
-#duration_div {
-    padding: 10px;
-    margin:20px;
-    
-    border-radius: 20px;
-    color: white;
-}
-
-
-
 /* Dialog modal to display average rating and duration info for buttons on the left column*/
-
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* average rating modal css */
 .avgRatingModal{
     padding-left: 40px;
     padding-right: 40px;
@@ -235,12 +203,56 @@ dialog::backdrop {
     border-radius: 40px;
 }
 
-button.average-rating-open-modal {
-    color: rgb(161, 70, 14);
+button[average-rating-open-modal] {
+    background-color: rgb(196, 199, 201);
+    color: #2f2f2f;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+button[average-rating-open-modal]:hover {
+    background-color: rgb(161, 70, 14);
+    color: #ffffff; 
+}
+
+/* CSS for the all-time average rating div */
+#ratings_div {
+    padding: 10px;
+    margin: 20px;
+    
+    color: white;
+    border-radius: 20px;
+}
+
+
+button[average-rating-close-modal] {
+    border: none;
+    background-color: grey;
+    color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button[average-rating-close-modal]:hover {
+    background-color: rgb(178, 163, 163);
 }
 
 
 
+
+/* average duration modal css */
 .avgDurationModal{
     padding-left: 40px;
     padding-right: 40px;
@@ -254,8 +266,59 @@ button.average-rating-open-modal {
     border-radius: 40px;
 }
 
+button[average-duration-open-modal] {
+    background-color: rgb(196, 199, 201);
+    color: #2f2f2f;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+button[average-duration-open-modal]:hover {
+    background-color: rgb(176, 104, 4);
+    color: #ffffff; 
+}
+
+/* CSS for the all-time sleep duration div */
+#duration_div {
+    padding: 10px;
+    margin:20px;
+    
+    border-radius: 20px;
+    color: white;
+}
+
+button[average-duration-close-modal] {
+    border: none;
+    background-color: grey;
+    color: #ffffff;
+    padding: 10px 40px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button[average-duration-close-modal]:hover {
+    background-color: rgb(178, 163, 163);
+}
 
 
+/* create a container for the buttons so they can be centered */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px; 
+
+}
 
 
 
@@ -290,7 +353,6 @@ button.average-rating-open-modal {
     color: rgb(254, 254, 254);
     border-radius: 40px;
     z-index: 10;
-    width: 20%;
 }
 
 .modal [data-close-modal] {
@@ -299,7 +361,6 @@ button.average-rating-open-modal {
     color: #ffffff;
     padding: 6px 8px;
     border-radius: 10px;
-
     cursor: pointer;
 
     font-family: "Ubuntu", sans-serif;
@@ -309,7 +370,6 @@ button.average-rating-open-modal {
 
 .modal [data-close-modal]:hover {
     background-color: rgb(178, 163, 163);
-    color: #ffffff;
 }
 
 

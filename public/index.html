@@ -33,9 +33,12 @@
 
             <br>
             <br>
+            <br>
 
-            <!-- create the button to open the Average Sleep Info Modal -->
-            <button average-rating-open-modal>All Time Average Sleep Rating</button>
+            <!-- create the container for the button to center it -->
+            <div class="button-container">
+                <button average-rating-open-modal>⭐ All Time Average Sleep Ratings ⭐</button>
+            </div>            
 
             <!-- dialog modal for average sleep-->
             <dialog average-rating-modal class="avgRatingModal">
@@ -50,8 +53,10 @@
             <br>
             <br>
 
-            <!-- create the button to open the Average Duration Info Modal -->
-            <button average-duration-open-modal>All Time Average Sleep Duration</button>
+            
+            <div class="button-container">
+                <button average-duration-open-modal>🛌 All Time Average Sleep Durations 🛌</button>
+            </div>
 
             <!-- dialog modal for average duration-->
             <dialog average-duration-modal class="avgDurationModal">
@@ -168,7 +173,7 @@
 
             <h2>Previous Sleep Data</h2>
 
-            <h3>😴 Total Logged Entries:</h3>
+            <h3 id="entry-counter">😴 Total Logged Entries:</h3>
 
             <!-- tasks will be added here as they are submitted onto the array -->
             <ul id="tasklist"></ul>
