@@ -1,12 +1,45 @@
 # tabr9714-sleeptracker
 
-*Overview:*
 
-This project is a web-based tracking application that visualises sleep data. 
-It allows users to log their sleep information and gives different inputs in a form including the date, sleep type, start and end times, rating, and optional dream details.
+## Overview:
+Welcome to the Sleep Tracker application! 
 
-On submission of the form, the app displays all logged entries on the 'Previous Sleep Data' tasklist. This data also gets loaded onto local storage. 
-Using the given information the app updates the DOM to the right most column of the page. It calculates and displays some key information like the total sleep duration, alongside the date when the sleep entry was submitted, the sleep rating, and a picture representing the type of sleep depending on the users choice. ('Full nights sleep', 'Restful Nap', and 'Power Nap")
+This project is a web-based tracking application that allows you to log your sleep data, track sleep patterns, and visualise your sleep statistics over time.
+
+
+## Features
+- Log sleep data including date, type of sleep, start time, end time, sleep rating, and optional dream details.
+- View a chart displaying the duration of full nights' sleep for the past seven entries.
+- View all-time average sleep ratings and durations by clicking the corresponding buttons. The modal pop-ups provide detailed information and statistics.
+- All logged entries are displayed in the right column and is stored using Local Storage.
+
+
+
+## Usage
+
+1. **Logging Sleep Data:**
+    - On the sleep form, fill in the date, type of sleep, start time, end time, sleep rating, and optional dream details.
+    - Click the submit button to log the entry.
+
+2. **Viewing Logged Entires**
+    - Application displays all logged entries on the 'Previous Sleep Data' tasklist. This data also gets loaded onto local storage. 
+
+3. **Viewing Sleep Statistics:**
+    - The main chart displays the duration of full nights' sleep for the past seven entries.
+    - Click on the "⭐ All Time Average Sleep Ratings ⭐" button to view average sleep ratings.
+    - Click on the "🛌 All Time Average Sleep Durations 🛌" button to view average sleep durations.
+
+4. **Viewing More Details:**
+    - Each logged entry has a "More Info" button to view detailed information in a modal.
+    - Each logged entry has a "Delete" button to remove the entry.
+
+
+
+
+
+
+Using the given information the app updates the DOM to the right most column of the page. 
+It calculates and displays some key information like the total sleep duration, alongside the date when the sleep entry was submitted, the sleep rating, and a picture representing the type of sleep depending on the users choice. ('Full nights sleep', 'Restful Nap', and 'Power Nap")
 
     This information was specifically chosen to be displayed on the UI as users can quickly check for the most essential and useful information first. 
 
