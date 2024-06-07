@@ -112,6 +112,8 @@ Images:
 I had trouble accessing and running the demo repository that this application was intially based off as it did not update in real time with the changes made. I had to book a tutoring session to solve this issue however, in the meantime I created the basis of my application on a separate VSCode folder and copied the progress made so far into this final github repository once it was functioning properly.
 The changes made from then on are recorded in this github repository.
 
+Apologies for any confusion if this folder is named abcd1234-tracker.
+
 
 ## AI Acknowledgements:
 
