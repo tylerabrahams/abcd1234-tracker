@@ -1,4 +1,4 @@
-// Initialize Google Charts
+// Initialise Google Charts
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
@@ -19,12 +19,13 @@ window.onload = function () {
     taskList = storedTasks;
     taskList.forEach(task => displayTask(task));
   }
-  drawChart(); // Draw chart with existing data
+  //draw google charts with existing data
+  drawChart();
 
 
 
   //Example test data is for demonstrative purposes only, to show functionality once multiple entires have been made.
-  // Define a unique ID's for the example tasks
+  // Define a unique ID's for the example tasks so they can be tracked.
   const exampleTasks = [
     { id: 1, date: '01/01/2024', type: 'Full Nights Sleep', start: '23:00', end: '09:00', rating: 5, details: 'Example Test data' },
     { id: 2, date: '01/01/2024', type: 'Power Nap', start: '12:00', end: '12:25', rating: 3, details: 'Example Test data' },
@@ -46,7 +47,7 @@ window.onload = function () {
     { id: 11, date: '01/07/2024', type: 'Restful Nap', start: '15:00', end: '15:45', rating: 5, details: 'Example Test data' }
   ];
 
-  // Check if each example task already exists before adding
+  // Check if each example task already exists before adding so there are no duplicates
   exampleTasks.forEach(task => {
     if (!taskList.some(t => t.id === task.id)) {
       addTask(task.date, task.type, task.start, task.end, task.rating, task.details, task.id);
@@ -54,16 +55,17 @@ window.onload = function () {
     }
   });
 
+  //update the total logged entries conunter
   updateEntryCounter()
 };
 
 
 
-//entry counter to tally all logged entries
+//define counter to tally all logged entries
 let entryCounter = 0;
 console.log(entryCounter);
 
-//updates entry counter display on DOM
+//function updates entry counter display on right column
 function updateEntryCounter(){
   const counterElement = document.getElementById("entry-counter");
   entryCounter = taskList.length;
@@ -77,16 +79,18 @@ function updateEntryCounter(){
 function rightColumnScroll() {
   const rightColumn = document.querySelector('.right-column');
 
+  // Enable vertical scrollbar
   rightColumn.addEventListener('mouseenter', function () {
-    rightColumn.style.overflowY = 'auto'; // Enable vertical scrollbar
+    rightColumn.style.overflowY = 'auto'; 
   });
 
+  // Disable vertical scrollbar
   rightColumn.addEventListener('mouseleave', function () {
-    rightColumn.style.overflowY = 'hidden'; // Disable vertical scrollbar
+    rightColumn.style.overflowY = 'hidden'; 
   });
 }
 
-// Enable scrolling for the right column
+// call the function to enable scrolling for the right column
 rightColumnScroll();
 
 
@@ -94,7 +98,6 @@ rightColumnScroll();
 //add tasks and push onto the array
 function addTask(date, type, start, end, rating, details, id = Date.now()) {
   let task = {
-    // id: Date.now(), // Generate a unique ID for each task
 
     // Use provided ID or generate a unique ID for each task
     id: id,
@@ -111,26 +114,30 @@ function addTask(date, type, start, end, rating, details, id = Date.now()) {
   };
 
   taskList.push(task);
+
   // Update local storage
   localStorage.setItem('taskList', JSON.stringify(taskList)); 
+
   // Pass the newly added task to displayTask
   displayTask(task); 
 
+  //update chart
   drawChart();
 
+  //update entry counter
   updateEntryCounter();
 }
 
 
-
-// Function to format the date to make it user friendly
-// previously yy/mm/dd, now it will show weekday dd/mm/yy
+// Function to format the date to make it more user friendly
 function formatDate(dateString) {
-  const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' };
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB', options); // 'en-GB' is for British English locale
-}
 
+  // previously yy/mm/dd, now it will show-  weekday dd/mm/yy
+  const options = { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' };
+
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-GB', options);
+}
 
 
 //function to calculate the sleep duration using inputted start and end times
@@ -155,8 +162,7 @@ function calculateSleepDuration(start, end) {
 const form = document.getElementById("taskform");
 const tasklist = document.getElementById("tasklist");
 
-
-//create function for when submit button is pressed
+//create function for when the submit button is pressed
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -167,15 +173,20 @@ form.addEventListener("submit", function (event) {
   const rating = form.elements.sleepRating.value;
   const details = form.elements.dreamDetails.value;
 
+  //check if all required fields are filled in
   if (date && type && start && end && rating) {
+
+    //call the addTask function with info
     addTask(date, type, start, end, rating, details);
+
+    //reset the form to be used again
     form.reset();
+
   } else {
+
     alert("Please fill in all required fields.");
   }
 });
-
-
 
 
 //create modal functionality to get more information on items in tasklist
@@ -196,39 +207,31 @@ modal.querySelector("[data-close-modal]").addEventListener("click", closeModal);
 
 
 
-
-
 //create the tasks and their contents
 function displayTask(task) {
   let item = document.createElement("li");
   item.setAttribute("data-id", task.id);
 
-  //include image based on sleep type
+  //include image based on corrresponding sleep type
   let img = document.createElement("img");
   img.src = sleepTypeImages[task.type];
   img.alt = task.type;
   img.classList.add("sleep-type-image");
 
 
+  //display key information
   item.innerHTML = `
     <p><strong>Date:</strong> ${formatDate(task.date)}</p>
     <p><strong>Duration:</strong> ${task.duration}</p>
-    
   `;
   //<p><strong>Rating:</strong> ${task.rating}</p>
   //<p><strong>Type:</strong> ${task.type}</p>
-  //<p><strong>Start:</strong> ${task.start}</p>
-  //<p><strong>End:</strong> ${task.end}</p>
-  //<p><strong>Dream Details:</strong> ${task.details}</p>
 
 
-  //insert image
-  item.insertBefore(img, item.firstChild); // Insert the image at the beginning
+  //insert image at the beginning before the text
+  item.insertBefore(img, item.firstChild);
 
-  //insert item
-  // tasklist.appendChild(item);
-
-  // Prepend item so new tasks get added to the top of page
+  // Prepend item so new tasks get added to the top of page, makes it more user friendly
   tasklist.prepend(item);
 
 
@@ -236,10 +239,13 @@ function displayTask(task) {
   let moreinfoButton = document.createElement("button");
   let moreinfoButtonText = document.createTextNode("More Info");
   moreinfoButton.appendChild(moreinfoButtonText);
+
   // Add a class to the button to change its css
   moreinfoButton.classList.add("more-info-button");
+
   //add to the end of item list
   item.appendChild(moreinfoButton);
+
 
   //add all details into modal when more info button is pressed 
   moreinfoButton.addEventListener("click", () => {
@@ -260,21 +266,28 @@ function displayTask(task) {
   let delButton = document.createElement("button");
   let delButtonText = document.createTextNode("Delete");
   delButton.appendChild(delButtonText);
+
   // Add a class to the button to change its css
   delButton.classList.add("del-button");
+
   //add to the end of item list
   item.appendChild(delButton);
+
 
   //create the function for when the delete button is pressed
   delButton.addEventListener("click", function (event) {
     item.remove();
+
     // Remove from taskList based on task id
     taskList = taskList.filter(t => t.id != task.id); 
+
     // Update local storage
     localStorage.setItem('taskList', JSON.stringify(taskList)); 
 
+    //update chart
     drawChart();
 
+    //update entry counter
     updateEntryCounter();
 
   });
@@ -305,35 +318,40 @@ function drawChart() {
   sortedTasks.forEach(task => {
     const [hrs, mins] = task.duration.split(' ').map(part => parseInt(part));
     const duration = hrs + mins / 60;
-    const formattedDate = formatDate(task.date); // Use formatDate function to make the date user-friendly
+
+    // Use formatDate function to make the date user-friendly
+    const formattedDate = formatDate(task.date); 
     data.addRow([formattedDate, duration]);
   });
 
   const options = {
     title: 'Full Nights Sleep - Past 7 Logged Entries',
+    // x-axis
     hAxis: {
       title: 'Date',
       titleTextStyle: { bold: true }
     },
+    //y-axis
     vAxis: {
       title: 'Duration (hours)',
       titleTextStyle: { bold: true }
     },
     legend: 'none',
 
-    //consistency using the same colours as form
+    //consistency using the same blue and white colours as the form
     colors: ['3291F1'],
     backgroundColor: '#ffffff'
   };
 
+  //call and draw column chart
   const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
   chart.draw(data, options);
 
 
-  // Call average sleep type function
+  // Call average sleep type function below
   displayAverageRatings();
 
-  // Call average sleep duration function
+  // Call average sleep duration function below
   displayAverageSleepDuration();
 
 }
@@ -343,7 +361,7 @@ function drawChart() {
 function calculateAverageRatings() {
   const averageRatings = {};
 
-  // Initialize rating sums and counts for each sleep type
+  // Initialise rating sums and counts for each sleep type
   const ratingSums = {
     "Full Nights Sleep": 0,
     "Power Nap": 0,
@@ -355,7 +373,7 @@ function calculateAverageRatings() {
     "Restful Nap": 0
   };
 
-  // Iterate through taskList to calculate sums and counts
+  // Go through taskList to calculate sums and counts
   taskList.forEach(task => {
     ratingSums[task.type] += task.rating;
     ratingCounts[task.type]++;
@@ -367,7 +385,6 @@ function calculateAverageRatings() {
     //checks for ratings for the current sleep type, if true and count is greater than 0, sum is divided by counter.
     //if false and there are no ratings, and makes the rating 0.
     averageRatings[type] = ratingCounts[type] > 0 ? ratingSums[type] / ratingCounts[type] : 0;
-
   }
 
   return averageRatings;
@@ -388,7 +405,6 @@ function displayAverageRatings() {
 
     // Round to 2 decimal places
     const rating = averageRatings[type].toFixed(2);
-
     const ratingElement = document.createElement("h3");
 
     //change the style to the sleep type and sleep rating
@@ -405,7 +421,7 @@ function displayAverageRatings() {
 function calculateAverageSleepDuration() {
   const averageSleepDuration = {};
 
-  // Initialize duration sums and counts for each sleep type
+  // Initialise duration sums and counts for each sleep type
   const durationSums = {
     "Full Nights Sleep": { hours: 0, minutes: 0 },
     "Power Nap": { hours: 0, minutes: 0 },
@@ -417,7 +433,7 @@ function calculateAverageSleepDuration() {
     "Restful Nap": 0
   };
 
-  // Iterate through taskList to calculate sums and counts
+  // Go through taskList to calculate sums and counts
   taskList.forEach(task => {
     const [hrs, mins] = task.duration.split(' ').map(part => parseInt(part));
     durationSums[task.type].hours += hrs;
@@ -425,7 +441,6 @@ function calculateAverageSleepDuration() {
     durationCounts[task.type]++;
   });
 
-  // Calculate average sleep duration for each sleep type
   // Calculate average sleep duration for each sleep type
   for (const type in durationSums) {
     const totalMinutes = durationSums[type].hours * 60 + durationSums[type].minutes;

@@ -1,134 +1,119 @@
-# tabr9714-sleeptracker
+## DECO2017 Web App Prototype
+
+Made by Tyler Abrahams- tabr9714
 
 
 ## Overview:
-Welcome to the Sleep Tracker application! 
+Welcome to the SleepWise! Your personalised sleep tracker.
 
-This project is a web-based tracking application that allows you to log your sleep data, track sleep patterns, and visualise your sleep statistics over time.
+This project is a single-page application (SPA) that allows you to log your sleep data, track sleep patterns, and visualise your sleep statistics over time. Its main purpose is to record and analyse your sleep data, providing accurate calculations based on the information you input.
+It is built using basic HTML, CSS and Javascript. Uses Local Storage for data persistence.
+
+
+## Version Control
+This project uses github for tracking changes, managing development and code repository hosting. 
+See github repository here: https://github.com/tylerabrahams/tabr9714-sleeptracker-final 
 
 
 ## Features
-- Log sleep data including date, type of sleep, start time, end time, sleep rating, and optional dream details.
-- View a chart displaying the duration of full nights' sleep for the past seven entries.
-- View all-time average sleep ratings and durations by clicking the corresponding buttons. The modal pop-ups provide detailed information and statistics.
-- All logged entries are displayed in the right column and is stored using Local Storage.
-
-
-
-## Usage
+- *Sleep Form*: Log sleep data including date, type of sleep, start time, end time, sleep rating, and optional dream details.
+- *Full Nights Sleep Column Chart*: View a chart displaying the duration of full nights' sleep for the past seven entries.
+- *All Time Average Info Modals*: View all-time average sleep ratings and durations by clicking the corresponding buttons. The modal pop-ups provide detailed information and statistics.
+- *Previous Sleep Data Tasklist*: All logged entries are displayed in the right column under 'previous sleep data' and is stored using Local Storage. Entry counter tally updates automatically.
+- *Responsive design*: Layout adapts to different screen sizes, ensuring usability on both desktop and mobile devices.
 
 1. **Logging Sleep Data:**
-    - On the sleep form, fill in the date, type of sleep, start time, end time, sleep rating, and optional dream details.
+    - On the sleep form (middle column), fill in the date, type of sleep, start time, end time, sleep rating, and optional dream details.
     - Click the submit button to log the entry.
 
 2. **Viewing Logged Entires**
-    - Application displays all logged entries on the 'Previous Sleep Data' tasklist. This data also gets loaded onto local storage. 
+    - Application displays all logged entries on the 'Previous Sleep Data' tasklist. (Right column)
+    - This data also gets loaded onto local storage. 
+    - Duration of sleep is calculated and is displayed alongside date inputted.
+    - Picture is also shown on each task depending on the users choice of Sleep Type. ('Full nights sleep', 'Restful Nap', and 'Power Nap")
+    - Data entry counter is updated whenever a new entry or task is submitted/deleted.
 
 3. **Viewing Sleep Statistics:**
-    - The main chart displays the duration of full nights' sleep for the past seven entries.
-    - Click on the "⭐ All Time Average Sleep Ratings ⭐" button to view average sleep ratings.
-    - Click on the "🛌 All Time Average Sleep Durations 🛌" button to view average sleep durations.
+    - The main Google chart (left column) displays the duration of full nights' sleep for the past seven entries as a column chart.
+        - Only takes into account the 'Full Nights Sleep' sleep types so users can see their full nights of sleep over time.
+        - The graph represents the duration in hours calculated by the app on the y-axis. 
+        - Day and date of submission is on the x-axis.
+    - Click on the "⭐ All Time Average Sleep Ratings ⭐" button to view average sleep ratings in a modal.
+    - Click on the "🛌 All Time Average Sleep Durations 🛌" button to view average sleep durations in a modal.
 
 4. **Viewing More Details:**
     - Each logged entry has a "More Info" button to view detailed information in a modal.
-    - Each logged entry has a "Delete" button to remove the entry.
+    - The modal window provides detailed information for each sleep entry, which can be closed with a close button.
+
+5. **Deleting Entires**
+    - Each logged entry has a "Delete" button to remove the entry. Will also remove the entry from Local Storage.
+
+
+**Background and Text Colour Choices:**
+
+- Different shades of blue and purple were chosen for the background and surrounding colours of the application as they are most linked to having a calming effect and best suited the theme of sleep and rest.
+- White text highlights key information and is used to make the general text and certain functions stand out. 
+- The form section has a much lighter electric blue to draw the eyes of the user towards it first.
+- Average duration and rating modals keep the purple theme with different coloured borders to make them unique.
+- More Info modal uses a dark green to create a visual separation with the rest of the modals.
+- Delete button is a sublte grey however turns bright red when hivered over to warn the user.
 
 
 
+## Setup
+
+'Npm run dev' for updated code to run on localhost:1234 (recommended)
+
+'Npm run start' for code to run on localhost:8888 (this tends to be slightly more glitchy)
 
 
+- 11 example data entries were created as the window loads to demonstrate the apps functionality. 
+- These examples are purely to show what the app would look like without the user having to manually input multiple entries to see how the app works. 
 
-Using the given information the app updates the DOM to the right most column of the page. 
-It calculates and displays some key information like the total sleep duration, alongside the date when the sleep entry was submitted, the sleep rating, and a picture representing the type of sleep depending on the users choice. ('Full nights sleep', 'Restful Nap', and 'Power Nap")
-
-    This information was specifically chosen to be displayed on the UI as users can quickly check for the most essential and useful information first. 
-
-11 example data entries were created as the window loads to demonstrate the apps functionality. 
-These examples are purely to show what the app would look like without the user having to manually input multiple entries to see how the app works. 
-
-They can easily be deleted with the delete button to show what the app would look like with no data provided. (All graphs will reset and tasklist will be emptied, a simple refresh will load the test data back on to the page.)
+- They can easily be deleted with the delete button to show what the app would look like with no data provided. (All graphs will reset and tasklist will be emptied, a simple refresh will load the test data back on to the page.)
 
 
+## Usage
+There are two options:
 
-*Background and Text Colour choices:*
+1. View the website online at the following URL and copy the code into VSCode: https://github.com/tylerabrahams/tabr9714-sleeptracker-final
+2. Open the index.html file in your web browser to start using this application.
 
-Different shades of blue and purple were chosen for the background and surrounding colours of the application as they are most linked to having a calming effect and suited the theme of sleep and rest.
-White text highlights key information and is used to make the general text and certain functions stand out. 
-The form section has a much lighter electric blue to draw the eyes of the user towards it first.
-
-The font for headings...
-The font for the paragraph was Ubuntu...
-
-Emojis have been added for ...
+Once the command 'npm run dev' has been inputted and the page is open on localhost:1234, fill out the form and click submit. 
+You will see your newly added task at the top of the "previous sleep data' column and the entry counter will update.
+The google column chart and average statistic modals underneath will also update.
 
 
+## Limitations:
+
+This application uses localStorage for data persistence, which is limited to the specific browser and device. If opened on a different browser or device, the user's past entries and personalised column chart and statistics will not be there.
 
 
-*Format and Layout:*
+## Sources:
 
-All information is housed in a container split into 3 columns. 
+- Modal Tutorial: https://youtu.be/ywtkJkxJsdg?si=H4IBwiMuqP3jG39L
+- Google Charts Tutorial: https://youtu.be/tSHwhtZ96_8?si=448hgT9AQ6c6qqHk
+- Javascript dates Tutprial: https://youtu.be/CnozSz4wbBQ?si=6bumMSdELdeJ8snk 
+- Layout Inspiration: https://youtu.be/pb20ljTtOBk?si=HLy8WRcl9-D0_jx_ 
 
-- The first column contains all the statistics and data and represents them visually in a graph or modal.
-- the second column is the actual sleep form where suers input their data.
-- the third column is where users can see all of their past entries and can access more information or delete their selected entry.
+- Symbols and icons: https://www.i2symbol.com/symbols 
+- Emojis: https://emojipedia.org/person-in-bed 
 
-
-
-
-*UI and Key Features*
-
-
-Sleep Duration Chart: 
-    - Displays the sleep duration for the past 7 logged entries as a column chart.
-    - Only takes into account the 'Full Nights Sleep' sleep types so users can see the differeing hours of overnight sleep over time.
-    - used google charts...
-    - the google chart showing the past 7 logged entries of the users full nights of sleep. The graph represents the duration in hours calculated by the app over the date of the submission.
+*Images used for Sleep Type:*
+1. Full Nights Sleep- https://media.istockphoto.com/id/1275847179/vector/a-woman-falls-asleep-and-counts-sheep-insomnia.jpg?s=612x612&w=0&k=20&c=LwijnKK5_LgHj8-XZWNzUsShqXeaMp4nCmB60ZrbazM=  
+2. Power nap- https://www.shutterstock.com/image-vector/young-female-get-healthy-sleeping-260nw-1988850308.jpg 
+3. Restful Nap- https://miro.medium.com/v2/resize:fit:1200/1*Kpz9HBXFyXtivPq2x-OANw.jpeg 
 
 
-Average Sleep Rating Modal:
+## Acknowledgements:
+
+I had trouble accessing and running the demo repository that this application was intially based off as it did not update in real time with the changes made. I had to book a tutoring session to solve this issue however, in the meantime I created the basis of my application on a separate VSCode folder and copied the progress made so far into this final github repository once it was functioning properly.
+The changes made from then on are recorded in this github repository.
 
 
+## AI Acknowledgements:
 
-Average Sleep Duration Modal:
+Project was initially generated with the following prompts using ChatGPT3.5:
 
-
-
-Sleep Info Form:
-
-
-
-Total Logged Entries Tally:
-
-
-
-More Info Button:
-    - A green button is used for the more info button as it distinguishes it from the rest of the page. 
-    - As you hover over it the button reacts by inverting the colour of the text and turning the bakground a lighter green.
-    - The more info button creates a modal that displays all the details entered and calculated about the users  sleep.
-
-    Modal for More Information: 
-        - A modal window provides detailed information for each sleep entry, which can be closed with a close button.
-        - Background becomes transluscent and nothing is clickable but the close button.
-
-Delete button:
-    - The delete button removes the task from the tasklist and off local storage.
-    - The delete button is a subtle grey colour however if the user hovers over the button the background turns a bright red, warning the user and alerting them of the function of the button.
-
-Responsive Design: 
-    - The layout adapts to different screen sizes, ensuring usability on both desktop and mobile devices.
-
-
-
-
-
-
-
-References:
-
-Modal Tutorial: https://youtu.be/ywtkJkxJsdg?si=H4IBwiMuqP3jG39L
-Google Charts Tutorial: https://youtu.be/tSHwhtZ96_8?si=448hgT9AQ6c6qqHk
-
-Symbols and icons: https://www.i2symbol.com/symbols 
-Emojis: https://emojipedia.org/person-in-bed 
-
-
+- Help write a readme file for the application.
+- Explain why local storage is not working properly on my application.

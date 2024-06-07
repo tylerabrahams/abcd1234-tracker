@@ -45,7 +45,6 @@ h3 {
     gap: 20px;
     width: 90%;
     max-width: 1800px;
-    /* max-height: 1000px; */
 }
 
 
@@ -57,17 +56,13 @@ h3 {
     background-color: rgb(34, 26, 104);
     border-radius: 8px;
     height: 100vh; 
-
-    /* height: max-content; */
 }
 
 
-/* Initial style for the right column */
+/* add css to hide the vertical scrollbar by default */
 .right-column {
-    /* Hide vertical scrollbar */
     overflow-y: hidden; 
 }
-
 
 
 
@@ -107,9 +102,7 @@ ul {
 }
 
 ul li {
-    /* display: grid; */
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
     padding: 20px;
     background-color: rgb(10, 75, 140);
