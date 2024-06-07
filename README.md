@@ -4,7 +4,7 @@ Made by Tyler Abrahams- tabr9714
 
 
 ## Overview:
-Welcome to the SleepWise! Your personalised sleep tracker.
+Welcome to SleepWise! Your personalised sleep tracker.
 
 This project is a single-page application (SPA) that allows you to log your sleep data, track sleep patterns, and visualise your sleep statistics over time. Its main purpose is to record and analyse your sleep data, providing accurate calculations based on the information you input.
 It is built using basic HTML, CSS and Javascript. Uses Local Storage for data persistence.
