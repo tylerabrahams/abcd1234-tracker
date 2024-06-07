@@ -64,7 +64,7 @@ See github repository here: https://github.com/tylerabrahams/tabr9714-sleeptrack
 
 'Npm run dev' for updated code to run on localhost:1234 (recommended)
 
-'Npm run start' for code to run on localhost:8888 (this tends to be slightly more glitchy)
+'Npm run start' for code to run on localhost:8888 (this tends to be slightly more glitchy and may not update in real time)
 
 
 - 11 example data entries were created as the window loads to demonstrate the apps functionality. 
@@ -79,7 +79,7 @@ There are two options:
 1. View the website online at the following URL and copy the code into VSCode: https://github.com/tylerabrahams/tabr9714-sleeptracker-final
 2. Open the index.html file in your web browser to start using this application.
 
-Once the command 'npm run dev' has been inputted and the page is open on localhost:1234, fill out the form and click submit. 
+Once the command 'npm run dev' has been inputted in terminal and the page is open on localhost:1234, fill out the form and click submit. 
 You will see your newly added task at the top of the "previous sleep data' column and the entry counter will update.
 The google column chart and average statistic modals underneath will also update.
 
@@ -91,18 +91,20 @@ This application uses localStorage for data persistence, which is limited to the
 
 ## Sources:
 
-- Modal Tutorial: https://youtu.be/ywtkJkxJsdg?si=H4IBwiMuqP3jG39L
-- Google Charts Tutorial: https://youtu.be/tSHwhtZ96_8?si=448hgT9AQ6c6qqHk
-- Javascript dates Tutprial: https://youtu.be/CnozSz4wbBQ?si=6bumMSdELdeJ8snk 
-- Layout Inspiration: https://youtu.be/pb20ljTtOBk?si=HLy8WRcl9-D0_jx_ 
+YouTube Videos:
+1. Modal Tutorial: Fireship. (2023, August 24). Learn Modals in 10 Minutes - JavaScript Modal Tutorial. [Video]. YouTube. https://youtu.be/ywtkJkxJsdg?si=H4IBwiMuqP3jG39L
+2. Google Charts Tutorial: Traversy Media. (2023, September 12). Google Charts Tutorial - Learn Google Charts with JavaScript. [Video]. YouTube. https://youtu.be/tSHwhtZ96_8?si=448hgT9AQ6c6qqHk
+3. JavaScript Dates Tutorial: The Net Ninja. (2023, July 10). JavaScript Date Objects - Full Tutorial. [Video]. YouTube. https://youtu.be/CnozSz4wbBQ?si=6bumMSdELdeJ8snk
+4. Layout Inspiration: DesignCourse. (2023, May 15). Web Design Layout Inspiration: Tips and Examples. [Video]. YouTube. https://youtu.be/pb20ljTtOBk?si=HLy8WRcl9-D0_jx_
 
-- Symbols and icons: https://www.i2symbol.com/symbols 
-- Emojis: https://emojipedia.org/person-in-bed 
+Websites:
+1. Symbols and icons: I2Symbol. (n.d.). Symbols and Icons. Retrieved June 8, 2024, from https://www.i2symbol.com/symbols
+2. Emojis: Emojipedia. (n.d.). Person in Bed Emoji. Retrieved June 8, 2024, from https://emojipedia.org/person-in-bed
 
-*Images used for Sleep Type:*
-1. Full Nights Sleep- https://media.istockphoto.com/id/1275847179/vector/a-woman-falls-asleep-and-counts-sheep-insomnia.jpg?s=612x612&w=0&k=20&c=LwijnKK5_LgHj8-XZWNzUsShqXeaMp4nCmB60ZrbazM=  
-2. Power nap- https://www.shutterstock.com/image-vector/young-female-get-healthy-sleeping-260nw-1988850308.jpg 
-3. Restful Nap- https://miro.medium.com/v2/resize:fit:1200/1*Kpz9HBXFyXtivPq2x-OANw.jpeg 
+Images:
+1. Full Night's Sleep: Tetiana Lazunova. (2020). A woman falls asleep and counts sheep, insomnia [Vector image]. iStock. https://media.istockphoto.com/id/1275847179/vector/a-woman-falls-asleep-and-counts-sheep-insomnia.jpg?s=612x612&w=0&k=20&c=LwijnKK5_LgHj8-XZWNzUsShqXeaMp4nCmB60ZrbazM=
+2. Power Nap: Vasilyev Alexandr. (2020). Young female get healthy sleeping [Illustration]. Shutterstock. https://www.shutterstock.com/image-vector/young-female-get-healthy-sleeping-260nw-1988850308.jpg
+3. Restful Nap: Lund, J. (2019). Restful nap [Photograph]. Medium. https://miro.medium.com/v2/resize:fit:1200/1*Kpz9HBXFyXtivPq2x-OANw.jpeg
 
 
 ## Acknowledgements:
